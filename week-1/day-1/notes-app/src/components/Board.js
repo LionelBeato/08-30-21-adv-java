@@ -7,18 +7,18 @@ class Board extends Component {
         super();
         this.state = {
             notes: [
-                {
-                    title: "Class Notes",
-                    body: "Always use constructors when extending another class",
-                },
-                {
-                    title: "Bloop",
-                    body: "blop",
-                },
-                {
-                    title: "Third title",
-                    body: "Third body",
-                },
+                // {
+                //     title: "Class Notes",
+                //     body: "Always use constructors when extending another class",
+                // },
+                // {
+                //     title: "Bloop",
+                //     body: "blop",
+                // },
+                // {
+                //     title: "Third title",
+                //     body: "Third body",
+                // },
             ]
         }
     }
@@ -27,24 +27,36 @@ class Board extends Component {
         let notes = this.state.notes;
         notes.push(
             {
-                title: "New Title",
-                body: "New Body",
+                id: Date.now()
             }
         );
         this.setState({notes});
 
     }
 
+    deleteNote(id) {
+        let newNoteArr = this.state.notes;
+        newNoteArr.map((note, index) => {
+            if (id === note.id) {
+                newNoteArr.splice(index,1); 
+            }
+        });
+        this.setState({notes: newNoteArr});
+    }
+
     render() {
-
-
         return (
             <div>
                 <div className="div-board">
                     <div className="row">
 
                         {
-                         this.state.notes.map(note => <Note title={note.title} body={note.body} />)
+                         this.state.notes.map(note => 
+                         <Note key={note.id}
+                         id={note.id}  
+                         title={note.title} 
+                         body={note.body} 
+                         deleteHandler={this.deleteNote.bind(this)} />)
                         }
           
                     </div>
