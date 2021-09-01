@@ -3,12 +3,13 @@ import './App.css';
 import PetStore from './PetStore';
 import IncrButton from './IncrButton';
 import ViewCount from './ViewCount';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import Activity from './Activity';
 
 
 function App() {
 
-  const [count, setCount] = useState(0); 
+  const [count, setCount] = useState(0);
 
   let data = [
     {
@@ -39,9 +40,10 @@ function App() {
       <br></br>
       <PetStore />
       <ViewCount count={count} />
-      <IncrButton handleIncrButton={handleIncrButton}/>
+      <IncrButton handleIncrButton={handleIncrButton} />
       <br></br>
-
+      <hr></hr>
+      <Activity />
     </div>
   );
 }
