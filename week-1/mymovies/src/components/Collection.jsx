@@ -3,9 +3,15 @@ import { Movie } from "./Movie";
 
 export const Collection = ({ name, movies }) => {
   return (
-    <div>
+    <div className="columns">
       {movies.map((movie) => (
-        <Movie title={movie.title} releaseDate={movie.releaseDate} />
+        <div className="column">
+          <Movie
+            title={movie.title}
+            releaseDate={movie.releaseDate}
+            synopsis={movie.synopsis}
+          />
+        </div>
       ))}
     </div>
   );

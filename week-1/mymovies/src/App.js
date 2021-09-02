@@ -3,7 +3,14 @@ import './App.css';
 import { Collection } from './components/Collection';
 import { useState, useEffect } from 'react';
 import 'bulma/css/bulma.min.css';
-
+import Navbar from './components/Navbar';
+import About from './pages/About';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
+import MovieGrid from './pages/MovieGrid';
 /*
 
   Here are some functionalities I want to add to my app:
@@ -12,16 +19,6 @@ import 'bulma/css/bulma.min.css';
   - Have app deployed
 */
 
-const movies90s = [
-  {
-    title: "Jurassic Park",
-    releaseDate: "199X",
-  },
-  {
-    title: "The Lost World: Jurassic Park",
-    releaseDate: "199X",
-  },
-]
 
 function App() {
 
@@ -31,10 +28,18 @@ function App() {
   // useEffect(() => { setMovies(movies90s) }, [])
 
   return (
-    <div>
-      <Collection name="Movies from the 90s" movies={movies90s} />
-      <Collection name="Other titles" />
-    </div>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/">
+          <MovieGrid />
+        </Route>
+      </Switch>
+    </Router>
+
   );
 }
 
