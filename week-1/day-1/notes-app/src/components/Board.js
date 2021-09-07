@@ -1,36 +1,56 @@
 import React, { Component } from 'react';
 import '../css/Board.css';
 import Note from './Note';
+import myFirebase from '../utility/myFirebase';
+import { onValue, set } from "firebase/database";
+
+const GENERIC_NOTE_TITLE = "New Note Title";
+const GENERIC_NOTE_BODY = "New Note Body";
 
 class Board extends Component {
     constructor() {
         super();
         this.state = {
-            notes: [
-                // {
-                //     title: "Class Notes",
-                //     body: "Always use constructors when extending another class",
-                // },
-                // {
-                //     title: "Bloop",
-                //     body: "blop",
-                // },
-                // {
-                //     title: "Third title",
-                //     body: "Third body",
-                // },
-            ]
+            notes: []
         }
+        this.firebaseDBref = myFirebase.getFireBaseRef();
+        // this.firebaseDBref.once('value').then((snapshot) => console.log(snapshot.val()));
+        onValue(this.firebaseDBref, (snapshot) => this.addNote(snapshot.val()), {
+            onlyOnce: true,
+        })
+
     }
 
-    addNote() {
-        let notes = this.state.notes;
-        notes.push(
-            {
-                id: Date.now()
-            }
+    addNote(notes) {
+        console.log(notes);
+        if (notes) {
+            for (let key in notes) {
+                // console.log(notes[key].title)
+                this.state.notes.push(
+                    {
+                        id: key,
+                        // title: notes[key].title,
+                        // body: notes[key].body,
+                    }
+                )
+            };
+        } else {
+            let pushRef = this.firebaseDBref.push();
+            set(pushRef, {
+                title: GENERIC_NOTE_TITLE,
+                body: GENERIC_NOTE_BODY
+            });
+            this.state.notes.push(
+                {
+                    id: pushRef.key,
+                    title: GENERIC_NOTE_TITLE,
+                    body: GENERIC_NOTE_BODY,
+                }
+            );
+        };
+        this.setState(
+            { notes: this.state.notes }
         );
-        this.setState({notes});
 
     }
 
@@ -38,10 +58,10 @@ class Board extends Component {
         let newNoteArr = this.state.notes;
         newNoteArr.map((note, index) => {
             if (id === note.id) {
-                newNoteArr.splice(index,1); 
+                newNoteArr.splice(index, 1);
             }
         });
-        this.setState({notes: newNoteArr});
+        this.setState({ notes: newNoteArr });
     }
 
     render() {
@@ -51,14 +71,14 @@ class Board extends Component {
                     <div className="row">
 
                         {
-                         this.state.notes.map(note => 
-                         <Note key={note.id}
-                         id={note.id}  
-                         title={note.title} 
-                         body={note.body} 
-                         deleteHandler={this.deleteNote.bind(this)} />)
+                            this.state.notes.map(note =>
+                                <Note key={note.id}
+                                    id={note.id}
+                                    title={note.title}
+                                    body={note.body}
+                                    deleteHandler={this.deleteNote.bind(this)} />)
                         }
-          
+
                     </div>
                 </div>
                 <div>

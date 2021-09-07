@@ -3,23 +3,21 @@ import PropTypes from 'prop-types';
 import '../css/Note.css';
 
 
-const GENERIC_NOTE_TITLE = "New Note Title";
-const GENERIC_NOTE_BODY = "New Note Body"; 
 
 class Note extends Component {
     constructor(props) {
         super(props);
         this.titleContent = React.createRef();
-        this.bodyContent = React.createRef(); 
+        this.bodyContent = React.createRef();
         this.state = {
-            title: GENERIC_NOTE_TITLE,
-            body: GENERIC_NOTE_BODY,
-            editMode: false, 
+            title: props.title,
+            body: props.body,
+            editMode: false,
         }
     }
 
     handleEdit() {
-        this.setState({editMode: true});
+        this.setState({ editMode: true });
     }
 
     handleSave() {
@@ -31,7 +29,7 @@ class Note extends Component {
     }
 
     handleDelete() {
-        this.props.deleteHandler(this.props.id); 
+        this.props.deleteHandler(this.props.id);
     }
 
     render() {
@@ -40,18 +38,18 @@ class Note extends Component {
         let buttonArea;
 
         if (this.state.editMode) {
-            titleElement = <textarea ref={this.titleContent} 
-            className="title-textarea" 
-            defaultValue = {this.state.title}></textarea>;
+            titleElement = <textarea ref={this.titleContent}
+                className="title-textarea"
+                defaultValue={this.state.title}></textarea>;
 
-            bodyElement = <textarea ref={this.bodyContent} 
-            className="body-textarea" 
-            defaultValue = {this.state.body}></textarea>;
+            bodyElement = <textarea ref={this.bodyContent}
+                className="body-textarea"
+                defaultValue={this.state.body}></textarea>;
 
             buttonArea = <div>
-                <button 
-                className="btn btn-primary" 
-                onClick={this.handleSave.bind(this)}>Save</button>
+                <button
+                    className="btn btn-primary"
+                    onClick={this.handleSave.bind(this)}>Save</button>
             </div>;
         } else {
             titleElement = <h5 className="card-title">{this.state.title}</h5>;
@@ -78,10 +76,10 @@ class Note extends Component {
     }
 }
 
-Note.defaultProps = {
-    title: "cool title",
-    body: "cool body"
-}
+// Note.defaultProps = {
+//     title: "cool title",
+//     body: "cool body"
+// }
 
 Note.propTypes = {
     title: PropTypes.string
