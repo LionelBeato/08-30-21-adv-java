@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../css/Note.css';
+import { set, child } from 'firebase/database';
 
 
 
@@ -21,11 +22,21 @@ class Note extends Component {
     }
 
     handleSave() {
+        console.log(this.props.firebaseDBRef)
+        const path = this.props.id
         this.setState({
             title: this.titleContent.current.value,
             body: this.bodyContent.current.value,
             editMode: false,
-        })
+        }, () =>
+            set(child(this.props.firebaseDBref, path),
+                {
+                    title: this.state.title,
+                    body: this.state.body,
+                }
+            )
+        )
+
     }
 
     handleDelete() {
