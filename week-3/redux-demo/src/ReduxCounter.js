@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 class ReduxCounter extends React.Component {
 
     increment = () => {
+        this.props.dispatch({ type: 'INCREMENT' });
 
     }
 
     decrement = () => {
-
+        this.props.dispatch({ type: 'DECREMENT' });
     }
 
     render() {

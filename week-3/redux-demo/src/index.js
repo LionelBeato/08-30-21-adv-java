@@ -6,13 +6,28 @@ import StateCounter from './StateCounter';
 import ReduxCounter from './ReduxCounter';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'; 
+import { createStore } from 'redux';
 
-function reducer() {
-
+const initialState = {
+  count: 0
 }
 
-const store = createStore(reducer); 
+function reducer(state = initialState, action) {
+  switch(action.type) {
+    case 'INCREMENT':
+      return {
+        count: state.count + 1
+      };
+    case 'DECREMENT':
+      return {
+        count: state.count - 1
+      };
+    default:
+      return state; 
+  }
+}
+
+const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
