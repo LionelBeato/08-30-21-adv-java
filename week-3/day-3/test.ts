@@ -335,6 +335,21 @@ console.log("Result of padding function:", padResult);
 // pet.swim();
 // pet.fly();
 
+// interface Guitar {
+//   tune(): void;
+//   play(): void;
+// }
+
+// interface VideoGame {
+//   rageQuit(): void;
+//   play(): void;
+// }
+
+// declare function getPlayable(): Guitar | VideoGame
+
+// let playable = getPlayable();
+// playable.play()
+
 interface Student {
   name: string;
   age: number;
@@ -353,3 +368,96 @@ let myStudentWorker: StudentWorker = {
 };
 
 console.log("Value of the object with an intersection type:", myStudentWorker);
+
+type NetworkLoadingState = {
+  state: "loading";
+};
+
+type NetworkFailedState = {
+  state: "failed";
+  code: number;
+};
+
+type NetworkSuccessState = {
+  state: "success";
+  response: {
+    title: string;
+    duration: number;
+    summary: string;
+  };
+};
+
+type NetworkState =
+  | NetworkLoadingState
+  | NetworkFailedState
+  | NetworkSuccessState;
+
+// classes
+
+/*
+  This is a simple animal class
+  note the use of a constructor and the "this" keyword
+*/
+class Animal {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  move(distanceInMeters: number = 0) {
+    console.log(`${this.name} moved ${distanceInMeters}m.`);
+  }
+}
+
+/*
+  As we can see below, classes can be extended
+  This allows for inheritance of properties and behaviors
+*/
+class Snake extends Animal {
+  private color: String;
+
+  constructor(name: string) {
+    super(name);
+  }
+
+  move(distanceInMeters = 5) {
+    console.log("Slithering...");
+    super.move(distanceInMeters);
+  }
+}
+
+class Horse extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+
+  neigh() {
+    console.log("this horse neighed");
+  }
+
+  move(distanceInMeters = 45) {
+    console.log("Galloping...");
+    super.move(distanceInMeters);
+  }
+}
+
+let buttercup: Animal = new Horse("Buttercup the horse");
+let mrSlithers = new Snake("Mr. Slithers the hognose snake");
+
+buttercup.move();
+/*
+  because buttercup is declared as an Animal
+  it can only access properties from the Animal class,
+  despite some methods being overriden. 
+  
+  As a result, buttercup cannot neigh(); 
+*/
+// buttercup.neigh();
+mrSlithers.move();
+
+/*
+  Note that the property color is private which means
+  that only the Snake class can access it. As such,
+  the line below is illegal. 
+*/
+// mrSlithers.color
