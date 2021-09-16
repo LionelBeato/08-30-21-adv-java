@@ -6,6 +6,10 @@ import axios from "axios";
 import SearchForm from "./Components/SearchForm";
 import ListRepositories from "./Components/ListRepositories";
 
+/*
+  This project is based on the following tutorial: 
+  https://blog.logrocket.com/typescript-react-and-create-react-app-leveraging-the-power-of-types/
+*/
 function App() {
   // typescript assigns a type to a variable
   // on the moment of declaration, dependent on the value
@@ -27,11 +31,12 @@ function App() {
     setRepositories(result.data.items);
   }
 
-
-  return <div>
-    <SearchForm search={search}/>
-    <ListRepositories repositories={repositories} />
-  </div>;
+  return (
+    <div>
+      <SearchForm search={search} />
+      <ListRepositories repositories={repositories} />
+    </div>
+  );
 }
 
 export default App;
