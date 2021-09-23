@@ -61,4 +61,18 @@ class SortsTest {
         Sorts.mergeSort(arr);
         System.out.println(Arrays.toString(arr));
     }
+
+    @Test
+    void givenArray_WhenUsingSortWithLambdas_thenSortedArray() {
+        Integer[] integers = {5,1,89,255,7,88,200,123,66};
+        Integer[] integersSorted = {1, 5, 7, 66, 88, 89, 123, 200, 255};
+
+        // we can use a lambda expression or simply a method reference
+        // to sort our list, the latter utilizes the compare method
+//        Arrays.sort(integers, (a, b) -> Integer.compare(a, b));
+        Arrays.sort(integers, Integer::compare);
+
+        assertArrayEquals(integers, integersSorted);
+    }
+
 }
