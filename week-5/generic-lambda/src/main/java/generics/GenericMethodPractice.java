@@ -1,3 +1,5 @@
+package generics;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
@@ -51,12 +53,12 @@ public class GenericMethodPractice {
         return Arrays.stream(a).collect(Collectors.toList());
     }
 
-//    public static void paintAllBuildings(List<Building> buildings) {
-//        buildings.forEach(Building::paint);
+//    public static void paintAllBuildings(List<generics.Building> buildings) {
+//        buildings.forEach(generics.Building::paint);
 //    }
 
-    // if we want to use the above method with any subtype of Building
-    // we need to employ a wildcard that extends Building
+    // if we want to use the above method with any subtype of generics.Building
+    // we need to employ a wildcard that extends generics.Building
     public static void paintAllBuildings(List<? extends Building> buildings) {
         buildings.forEach(Building::paint);
     }

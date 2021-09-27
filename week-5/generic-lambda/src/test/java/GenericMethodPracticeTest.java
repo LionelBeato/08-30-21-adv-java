@@ -1,3 +1,5 @@
+import generics.GenericMethodPractice;
+import generics.House;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -59,7 +61,7 @@ class GenericMethodPracticeTest {
         // into the method below
         String[] stringArray = {"hello", "world"};
         Float[] floatArray = {3.0f, 4.0f};
-//        GenericMethodPractice.fromNumArrayToList(stringArray);
+//        generics.GenericMethodPractice.fromNumArrayToList(stringArray);
         // since Float is of type Number,
         // we can use it with the bounded type in our method below
         GenericMethodPractice.fromNumArrayToList(floatArray);
@@ -71,7 +73,7 @@ class GenericMethodPracticeTest {
     void paintAllBuildings() {
 
         List<House> houses = List.of(new House(), new House());
-//        GenericMethodPractice.paintAllBuildings(houses);
+//        generics.GenericMethodPractice.paintAllBuildings(houses);
 
 
     }

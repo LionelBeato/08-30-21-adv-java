@@ -1,4 +1,4 @@
-package petstore;
+package generics.petstore;
 
 public interface Petable {
 }

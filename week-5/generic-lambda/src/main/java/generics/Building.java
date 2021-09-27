@@ -1,3 +1,5 @@
+package generics;
+
 public class Building {
 
     String name;
