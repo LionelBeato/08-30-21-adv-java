@@ -22,10 +22,24 @@ public class Main {
 
         SynchronizedRGB color = new SynchronizedRGB(0,0,0, "Pitch Black");
 
-        synchronized (color) {
-            int myColorInt = color.getRGB(); // this is our first statement
-            String myColorName = color.getName(); // this is our second statement
-        }
+        // this is our first statement
+        int myColorInt = color.getRGB();
+        // new Thread accesses color as a resource and invokes "set"
+        new Thread(() -> color.set(255,255,255,"white"));
+
+        // this is our second statement
+        String myColorName = color.getName();
+        // will still resolve to "pitch black"
+        System.out.println(color.getName());
+
+        /*
+         instead, we can group our two declarations in a synchronized
+         code block!
+                synchronized (color) {
+                    int myColorInt = color.getRGB(); // this is our first statement
+                    String myColorName = color.getName(); // this is our second statement
+                }
+        */
 
     }
 
