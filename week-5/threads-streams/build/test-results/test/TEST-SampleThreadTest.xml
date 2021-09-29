@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SampleThreadTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-09-29T14:45:46" hostname="Lionels-MacBook-Air.local" time="0.013">
+  <properties/>
+  <testcase name="givenStartedThread_whenJoinCalled_waitsTillCompletion()" classname="SampleThreadTest" time="0.013"/>
+  <system-out><![CDATA[Thread created
+Invoking join
+Thread Thread-3 started
+Thread Thread-3 exiting
+Returned from join
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

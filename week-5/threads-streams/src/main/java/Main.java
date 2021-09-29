@@ -19,6 +19,14 @@ public class Main {
         // while at first this may seem a little hard to parse
         // it is arguably cleaner, neater and more readable
         new Thread(() -> System.out.println("Hello from a lambda runnable! ")).start();
+
+        SynchronizedRGB color = new SynchronizedRGB(0,0,0, "Pitch Black");
+
+        synchronized (color) {
+            int myColorInt = color.getRGB(); // this is our first statement
+            String myColorName = color.getName(); // this is our second statement
+        }
+
     }
 
 }
