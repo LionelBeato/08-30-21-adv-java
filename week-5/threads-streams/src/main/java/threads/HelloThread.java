@@ -1,3 +1,5 @@
+package threads;
+
 public class HelloThread extends Thread {
 
     @Override

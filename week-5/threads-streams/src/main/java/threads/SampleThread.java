@@ -1,8 +1,10 @@
+package threads;
+
 public class SampleThread extends Thread {
 
     public int processingCount = 0;
 
-    SampleThread(int processingCount) {
+    public SampleThread(int processingCount) {
         this.processingCount = processingCount;
         System.out.println("Thread created");
     }

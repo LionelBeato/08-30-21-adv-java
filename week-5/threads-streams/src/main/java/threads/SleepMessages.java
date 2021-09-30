@@ -1,3 +1,5 @@
+package threads;
+
 public class SleepMessages {
 
     // recall that our main method is our main thread

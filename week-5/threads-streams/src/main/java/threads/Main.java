@@ -1,3 +1,5 @@
+package threads;
+
 public class Main {
 
     // below is our entrypoint
@@ -6,8 +8,8 @@ public class Main {
     // the main thread as the ability to create additional threads
     public static void main(String[] args) {
         // below we are instantiating a new thread
-        // and passing in a new instance of HelloRunnable
-        // HelloRunnable is of type Runnable which is one of the
+        // and passing in a new instance of threads.HelloRunnable
+        // threads.HelloRunnable is of type Runnable which is one of the
         // objects that your thread will need to execute
         new Thread(new HelloRunnable()).start();
         // below we are instantiating a subclass of Thread
@@ -45,6 +47,8 @@ public class Main {
         // bear in mind that invert() will produce a brand-new object in the place of
         // the original immutableRGB
         new Thread(() -> System.out.println(immutableRGB.invert())).start();
+
+
 
     }
 

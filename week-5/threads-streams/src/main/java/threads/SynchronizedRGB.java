@@ -1,3 +1,5 @@
+package threads;
+
 public class SynchronizedRGB {
 
     private int red;

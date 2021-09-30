@@ -1,3 +1,5 @@
+package threads;
+
 public class DeadLock {
 
     static class Friend {

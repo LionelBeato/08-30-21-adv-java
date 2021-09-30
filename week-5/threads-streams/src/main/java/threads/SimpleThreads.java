@@ -1,3 +1,5 @@
+package threads;
+
 public class SimpleThreads {
 
     static void threadMessage(String message) {

@@ -1,3 +1,5 @@
+package threads;
+
 public class ImmutableRGB {
 
     final private int red;
@@ -39,7 +41,7 @@ public class ImmutableRGB {
 
     @Override
     public String toString() {
-        return "ImmutableRGB{" +
+        return "threads.ImmutableRGB{" +
                 "red=" + red +
                 ", green=" + green +
                 ", blue=" + blue +
