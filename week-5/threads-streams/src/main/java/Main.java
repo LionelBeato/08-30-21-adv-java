@@ -41,6 +41,11 @@ public class Main {
                 }
         */
 
+        ImmutableRGB immutableRGB = new ImmutableRGB(255, 255, 255, "White");
+        // bear in mind that invert() will produce a brand-new object in the place of
+        // the original immutableRGB
+        new Thread(() -> System.out.println(immutableRGB.invert())).start();
+
     }
 
 }
