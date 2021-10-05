@@ -13,8 +13,16 @@ import java.util.List;
 @Service
 public class PersonServiceImpl implements PersonService {
 
+    // recall that autowired is a form of dependency injection
+    // via annotations. We can also utilize constructor based
+    // dependency injection
     @Autowired
     PersonRepository personRepository;
+
+    // this is the constructor based dependency injection
+//    public PersonServiceImpl (PersonRepository personRepository) {
+//        this.personRepository = personRepository;
+//    }
 
     @Override
     public Person getPersonById(Long id) {

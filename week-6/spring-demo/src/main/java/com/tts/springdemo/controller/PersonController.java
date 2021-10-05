@@ -16,6 +16,10 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
+    // GetMapping is an amalgamation of RequestMapping and ResponseBody
+    // this aligns one to one with the GET HTTP Method
+    // the other methods are also represented via:
+    // @PostMapping, @PutMapping, @DeleteMapping, @PatchMapping
     @GetMapping("/get/all")
     public List<Person> getAllPersons() {
         return personService.getAllPersons();
@@ -42,8 +46,12 @@ public class PersonController {
         return personService.getPersonByFirstName(firstName);
     }
 
-
-
-
+    // note that mappings will simply resolve their methods by default
+    // here if an end user goes to "/print" they won't get anything useful back
+    // but the application will still print something out to the console
+    @RequestMapping("/print")
+    public void printThing() {
+        System.out.println("This is in my console!");
+    }
 
 }
