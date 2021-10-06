@@ -10,6 +10,9 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
+    // note that we can define methods in our repository interface
+    // and depending on the name and annotations used, the functionality will
+    // be interpreted by our JPA layer
     List<Product> findAll();
     Product findById(long id);
     List<Product> findByBrand(String brand);
