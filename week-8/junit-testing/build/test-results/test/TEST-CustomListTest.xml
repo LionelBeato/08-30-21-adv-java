@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CustomListTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-19T15:50:17" hostname="Lionels-Air.lan" time="0.01">
+  <properties/>
+  <testcase name="givenListWithWithSecondELement_WhenGet_thenThatElementIsReturned()" classname="CustomListTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
